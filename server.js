@@ -9,12 +9,15 @@ const server = prerender({
     "--headless",
     "--disable-gpu",
     "--remote-debugging-port=9222",
+    "--remote-debugging-address=0.0.0.0",
     "--hide-scrollbars",
     "--no-sandbox"
-  ]
+  ],
+  pageDoneCheckInterval: 500,
+  waitAfterLastRequest: 1000,
+  pageLoadTimeout: 180000
 });
 
-server.use(prerender.sendPrerenderHeader());
 server.use(prerender.blockResources());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
