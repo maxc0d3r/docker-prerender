@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const prerender = require("prerender");
-const cache = require("prerender-memory-cache");
 
 const server = prerender({
   chromeLocation: "/usr/lib/chromium/chrome",
@@ -21,7 +20,6 @@ const server = prerender({
 server.use(prerender.blockResources());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
-server.use(cache);
 
 server.start();
 
